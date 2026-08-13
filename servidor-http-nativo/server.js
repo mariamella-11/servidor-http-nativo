@@ -11,4 +11,5 @@ const server = http.createServer((req, res) => {
 
 server.listen(PORTA, () => {
     console.log(`Servidor funcionando na porta ${PORTA}`)
+    console.log(new Date().toISOString())
 })

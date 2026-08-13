@@ -13,3 +13,5 @@ server.listen(PORTA, () => {
     console.log(`Servidor funcionando na porta ${PORTA}`)
     console.log(new Date().toISOString())
 })
+
+// O servidor não iria finalizar, ele não devolveria um resposta para o cliente.

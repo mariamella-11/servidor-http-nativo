@@ -27,6 +27,10 @@ const server = http.createServer((req, res) => {
     if (req.method == "GET" && req.url == "/status") {
         return res.end(JSON.stringify({data: {status: "ok"}}));
     }
+    else{
+        res.statusCode = 404
+        return res.end(JSON.stringify({"erro 404": "Rota não encontrada"}));
+    }
 
     res.end(JSON.stringify({data: "Página Inicial"}))
 })

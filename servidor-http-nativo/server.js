@@ -1,17 +1,32 @@
-const http = require('node:http');
-const PORTA = 3000;
-const server = http.createServer((req, res) => {
-    console.log(`Requisição recebida! ${req.method} ${req.url}`)
+import http from 'node:http'
+import { URL } from 'node:url'
 
-    res.statusCode = 201;
+const porta = 3000
+
+const produtos = [
+    {id: 1, nome: "Sabonete"},
+    {id: 2, nome: "Volante LogiTech G923"},
+    {id: 3, nome: "Sabão em Pó"},
+    {id: 4, nome: "Pelúcia do Sonic"},
+]
+
+const server = http.createServer((req, res) => {
+    res.statusCode = 200
     res.setHeader('Content-Type', 'application/json; charset=utf-8')
 
-    res.end(JSON.stringify({ status: "ok" }));
-});
+    if (req.method == "GET" && req.url == "/contato") {
+        return res.end(JSON.stringify({data:
+            {numero_telefone: "67 99999 9999",
+                endereco: "Rua da Alegria, 99, Centro"}}));
+    }
 
-server.listen(PORTA, () => {
-    console.log(`Servidor funcionando na porta ${PORTA}`)
-    console.log(new Date().toISOString())
+    if (req.method == "GET" && req.url == "/produtos") {
+        return res.end(JSON.stringify(produtos));
+    }
+
+    res.end(JSON.stringify({data: "Página Inicial"}))
 })
 
-// O servidor não iria finalizar, ele não devolveria um resposta para o cliente.
+server.listen(porta, () => {
+    console.log(`Servidor ouvindo na porta ${porta}`)
+});

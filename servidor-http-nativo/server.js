@@ -15,16 +15,19 @@ const server = http.createServer((req, res) => {
     res.setHeader('Content-Type', 'application/json; charset=utf-8')
 
     if (req.method == "GET" && req.url == "/contato") {
+        console.log(`Requisição recebida! ${req.method} ${req.url}`)
         return res.end(JSON.stringify({data:
             {numero_telefone: "67 99999 9999",
                 endereco: "Rua da Alegria, 99, Centro"}}));
     }
 
     if (req.method == "GET" && req.url == "/produtos") {
+        console.log(`Requisição recebida! ${req.method} ${req.url}`)
         return res.end(JSON.stringify(produtos));
     }
 
     if (req.method == "GET" && req.url == "/status") {
+        console.log(`Requisição recebida! ${req.method} ${req.url}`)
         return res.end(JSON.stringify({data: {status: "ok"}}));
     }
     else{

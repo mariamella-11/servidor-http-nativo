@@ -24,6 +24,10 @@ const server = http.createServer((req, res) => {
         return res.end(JSON.stringify(produtos));
     }
 
+    if (req.method == "GET" && req.url == "/status") {
+        return res.end(JSON.stringify({data: {status: "ok"}}));
+    }
+
     res.end(JSON.stringify({data: "Página Inicial"}))
 })
 
